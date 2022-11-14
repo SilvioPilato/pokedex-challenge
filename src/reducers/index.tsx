@@ -1,25 +1,26 @@
 import React, { useReducer, createContext } from 'react';
-import appreducer, { PokemonState } from './appreducer';
+import appreducer, { AppState, PokemonState, SearchState } from './appreducer';
 
 type Props = {
     children: JSX.Element
 }
-  
-interface IAppContext {
-    currentPokemon: PokemonState | null,
-    currentSearch: string,
+
+type ContextDispatch = {
     SetCurrentPokemon: (pokemon: PokemonState) => void,
     ResetCurrentPokemon: () => void,
-    SetCurrentSearch: (search: string) => void
+    SetCurrentSearch: (search: string) => void,
+    SetSearchState: (nextState: SearchState) => void,
 }
+  
+type IAppContext = AppState & Partial<ContextDispatch>;
 
-
-const initialState = {
+const initialState: AppState = {
     currentPokemon: null,
-    currentSearch: ""
+    currentSearch: "",
+    searchState: SearchState.DEFAULT
 }
 
-export const AppContext = createContext<Partial<IAppContext>>(initialState); 
+export const AppContext = createContext<IAppContext>(initialState); 
 
 export const AppProvider: React.FC<Props> = ({ children }) => {
     const [state, dispatch] = useReducer(appreducer, initialState);
@@ -40,12 +41,20 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
             payload: search
         })
     }
+    const SetSearchState = (nextState: SearchState) => {
+        dispatch({
+            type: "SET_SEARCH_STATE",
+            payload: nextState
+        })
+    }
     const contextValue = {
         currentPokemon: state.currentPokemon,
-        currentSearch: "",
+        currentSearch: state.currentSearch,
+        searchState: state.searchState,
         SetCurrentPokemon,
         ResetCurrentPokemon,
-        SetCurrentSearch
+        SetCurrentSearch,
+        SetSearchState
     }
     return (
       <AppContext.Provider value={contextValue}>
