@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../../reducers';
-import { SearchState } from '../../reducers/appreducer';
+import { SearchState } from '../../reducers/reducer';
 import { LoadingResult } from './LoadingResult';
 import { NotFoundResult } from './NotFoundResult';
 import { OkResult } from './OkResult';

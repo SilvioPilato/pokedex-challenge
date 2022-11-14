@@ -1,10 +1,11 @@
 export type AppState = {
-  currentPokemon: PokemonState | null,
+  currentPokemon: Pokemon | null,
   currentSearch: string,
-  searchState: SearchState
+  searchState: SearchState,
+  selected: Pokemon[]
 }
 
-export type PokemonState = {
+export type Pokemon = {
   sprites: Sprites,
   name: string,
   stats: PokemonStats[]
@@ -31,10 +32,12 @@ export enum SearchState {
 }
 
 export type PokemonAction = 
-  | { type: 'SET_CURRENT_POKEMON', payload: PokemonState }
+  | { type: 'SET_CURRENT_POKEMON', payload: Pokemon }
   | { type: 'SET_CURRENT_SEARCH', payload: string}
   | { type: 'RESET_CURRENT_POKEMON'}
-  | { type: 'SET_SEARCH_STATE', payload: SearchState};
+  | { type: 'SET_SEARCH_STATE', payload: SearchState}
+  | { type: 'ADD_POKEMON_TO_SELECTION', payload: Pokemon}
+  | { type: 'REMOVE_POKEMON_FROM_SELECTION', payload: number}
 
 export default function reducer(state: AppState, action: PokemonAction) {
     switch (action.type) {
@@ -46,6 +49,11 @@ export default function reducer(state: AppState, action: PokemonAction) {
           return {...state, currentSearch: action.payload};
       case 'SET_SEARCH_STATE':
             return {...state, searchState: action.payload};
+      case 'ADD_POKEMON_TO_SELECTION':
+            console.log([...state.selected, action.payload]);
+            return {...state, selected: [...state.selected, action.payload]};
+      case 'REMOVE_POKEMON_FROM_SELECTION':
+            return {...state, selected: state.selected.filter((_, index) => index !== action.payload)};
       default:
         return state
     }

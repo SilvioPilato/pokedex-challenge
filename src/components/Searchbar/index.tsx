@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { useContext } from 'react';
 import { AppContext } from '../../reducers';
-import { SearchState } from '../../reducers/appreducer';
+import { SearchState } from '../../reducers/reducer';
 export const SearchBar = () => {
     const {SetCurrentPokemon, ResetCurrentPokemon, SetCurrentSearch, SetSearchState} = useContext(AppContext)
     const [pokeText, setPokeText] = useState("");

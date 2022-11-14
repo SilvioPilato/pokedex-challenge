@@ -9,10 +9,10 @@ export const StatBlock = () => {
         <div style={{marginLeft: "1em", display: "flex", flexDirection: 'column'}}>
             <h5>Statistiche</h5>
             {
-                stats.map((stat) => {
+                stats.map((stat, index) => {
                     return (
-                        <span>
-                            <p style={{fontSize: "1em", margin: "auto"}}>
+                        <span key={`statrow-${index}`}>
+                            <p style={{fontSize: "1em", margin: "auto", fontWeight: "bold"}}>
                                 {stat.stat.name}
                             </p>
                             <progress value={stat.base_stat} max={100}/>
