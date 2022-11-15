@@ -4,9 +4,10 @@ import EmptyIcon from "../../pokeball_icon.svg";
 type Props = {
     pokemon?: Pokemon
     size?: number;
+    onClick?: () => void;
 }
 
-export const PokemonImage: React.FC<Props> = ({size, pokemon}) => {
+export const PokemonImage: React.FC<Props> = ({size, pokemon, onClick}) => {
     const isEmpty = !Boolean(pokemon);
     const isShiny = pokemon?.colorSelected === "shiny";
     const opacity = isEmpty ? "10%" : "100%";
@@ -16,6 +17,7 @@ export const PokemonImage: React.FC<Props> = ({size, pokemon}) => {
     }
     return (
         <img
+            onClick={onClick}
             width={size}
             height={size}
             alt='a pokemon'
