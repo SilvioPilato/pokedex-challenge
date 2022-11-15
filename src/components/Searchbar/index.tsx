@@ -13,10 +13,10 @@ export const SearchBar = () => {
     const onSubmit = async (event: FormEvent) => {
         event.preventDefault();
         if (!pokeText) return;
+        SetCurrentSearch?.(pokeText);
         SetSearchState?.(SearchState.LOADING);
         const url = `${pokedexAPIUrl}/${pokeText}`
         const response = await fetch(url);
-        SetCurrentSearch?.(pokeText);
         if (!response.ok) {
             SetSearchState?.(SearchState.NOT_FOUND);
             ResetCurrentPokemon?.();
@@ -25,6 +25,9 @@ export const SearchBar = () => {
         
         const decoded = await response.json();
         SetCurrentPokemon?.({
+            height: decoded.height,
+            weight: decoded.weight,
+            colorSelected: "default",
             name: decoded.name,
             stats: decoded.stats,
             sprites: {
@@ -38,7 +41,7 @@ export const SearchBar = () => {
     return (
         <form>
             <fieldset>
-                <label htmlFor="searchbar">Cerca un pokemon</label>
+                <h4>Cerca un pokemon</h4>
                 <input type="text" placeholder="e.g.: bulbasaur" id="searchbar" onSubmit={onSubmit} onChange={onChange}/>
                 <input className="button-primary" type="submit" value="Send" onClick={onSubmit}/>
             </fieldset>

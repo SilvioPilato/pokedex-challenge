@@ -7,7 +7,7 @@ import { AppProvider } from './reducers';
 export const App = () => {
     return (
         <AppProvider>
-            <div>
+            <div style={{margin: "1em"}}>
                 <SearchBar />
                 <SearchResult />
                 <PokeSlots />
