@@ -1,14 +1,15 @@
 import React from 'react';
 
 type Props = {
-    children: JSX.Element
+    children: JSX.Element,
+    size: number
 }
 
-export const ImageWrap: React.FC<Props> = ({children}) => {
+export const ImageWrap: React.FC<Props> = ({children, size}) => {
     return (
         <div style={{
-            height: 120,
-            width:120,
+            height: size,
+            width: size,
             border: "0.1rem solid #f4f5f6",
             borderRadius:"3%",
             display: "flex", 

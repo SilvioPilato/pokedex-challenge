@@ -65,11 +65,11 @@ export const OkResult = () => {
                         </form>
 
                     </div>
-                    <div className="column" style={{display: "flex", flexDirection: "column", justifyContent: "center"}}>
+                    <div className="column column-20" style={{display: "flex", flexDirection: "column", justifyContent: "center"}}>
                         <input className={isShiny ? disabledClasses : enabledClasses} type="submit" value="Default" onClick={setDefault}/>
                         <input className={isShiny ? enabledClasses : disabledClasses} type="submit" value="Shiny" onClick={setShiny}/>
                     </div>
-                    <div className="column column-offset-20">
+                    <div className="column">
                         <StatBlock  />
                     </div>
                 </div>
