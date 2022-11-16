@@ -16,38 +16,28 @@ export const PokeSlots = () => {
         }
     }
     const getSlots = () => {
-        const filledComponents = getFilledSlots();
-        let emptySlots = [];
-        const remainingSlots = maxSelected - filledComponents.length ;
-        for (let i = maxSelected - remainingSlots; i < maxSelected; i++) {
-            emptySlots.push(
+        const filledSlots = selected.length;
+        let components = [];
+        for (let i = 0; i < maxSelected; i++) {
+            const isEmpty = i > filledSlots;
+            const onClick = isEmpty ? undefined : onShowClick(i);
+            // const onRemove = isEmpty ? undefined : onRemoveClick(i);
+            // const isDisabled = isEmpty ? true : false;
+            const pokemon = isEmpty ? undefined : selected[i];
+            components.push(
                 <div key={`pokeslot-${i}`} style={{display: "flex", marginRight:"1em"}}>
                     <div style={{display: "flex", flexDirection: "column"}}>
-                        <ImageWrap size={70}>
-                            <PokemonImage size={50}/>
-                        </ImageWrap>
-                        {/* <input className="button button-outline" type="submit" value="Elimina" disabled/> */}
+                    <ImageWrap size={70}>
+                        <PokemonImage pokemon={pokemon} size={50} onClick={onClick}/>
+                    </ImageWrap>
+                    {/* {<input className="button button-outline" type="submit" value="Elimina" disabled={isDisabled} onClick={onRemove}/> } */}
                     </div>
                 </div>
             )
         }
-        return filledComponents.concat(emptySlots);
+        return components;
     }
 
-    const getFilledSlots = () => {
-        return selected.map((pokemon, index) => {
-            return (
-                <div key={`pokeslot-${index}`} style={{display: "flex", marginRight:"1em"}}>
-                    <div style={{display: "flex", flexDirection: "column"}}>
-                    <ImageWrap size={70}>
-                        <PokemonImage pokemon={pokemon} size={50} onClick={onShowClick(index)}/>
-                    </ImageWrap>
-                    {/* <input className="button button-outline" type="submit" value="Elimina" onClick={onRemoveClick(index)}/> */}
-                    </div>
-                </div>
-            )
-        });
-    }
     return (
         <div>
             <h4>Il tuo pokedex</h4>
