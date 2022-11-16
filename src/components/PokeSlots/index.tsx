@@ -19,18 +19,26 @@ export const PokeSlots = () => {
         const filledSlots = selected.length;
         let components = [];
         for (let i = 0; i < maxSelected; i++) {
-            const isEmpty = i > filledSlots;
+            const isEmpty = i >= filledSlots;
             const onClick = isEmpty ? undefined : onShowClick(i);
-            // const onRemove = isEmpty ? undefined : onRemoveClick(i);
-            // const isDisabled = isEmpty ? true : false;
+            const onRemove = isEmpty ? undefined : onRemoveClick(i);
+            const isDisabled = isEmpty ? true : false;
             const pokemon = isEmpty ? undefined : selected[i];
             components.push(
                 <div key={`pokeslot-${i}`} style={{display: "flex", marginRight:"1em"}}>
                     <div style={{display: "flex", flexDirection: "column"}}>
                     <ImageWrap size={70}>
-                        <PokemonImage pokemon={pokemon} size={50} onClick={onClick}/>
+                        <PokemonImage pokemon={pokemon} size={60} onClick={onClick}/>
                     </ImageWrap>
-                    {/* {<input className="button button-outline" type="submit" value="Elimina" disabled={isDisabled} onClick={onRemove}/> } */}
+                    {
+                        <input 
+                            className={"button button-clear"}
+                            style={{padding: 0, lineHeight: "normal", height: "1.8rem"}}
+                            type="submit" 
+                            value="Elimina" 
+                            disabled={isDisabled} 
+                            onClick={onRemove}/> 
+                    }
                     </div>
                 </div>
             )
