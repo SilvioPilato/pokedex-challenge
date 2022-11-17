@@ -24,11 +24,12 @@ export const PokeSlots = () => {
             const onRemove = isEmpty ? undefined : onRemoveClick(i);
             const isDisabled = isEmpty ? true : false;
             const pokemon = isEmpty ? undefined : selected[i];
+            const imgOpacity = isEmpty ? "10%" : "100%";
             components.push(
                 <div key={`pokeslot-${i}`} style={{display: "flex", marginRight:"1em"}}>
                     <div style={{display: "flex", flexDirection: "column"}}>
                     <ImageWrap size={70}>
-                        <PokemonImage pokemon={pokemon} size={60} onClick={onClick}/>
+                        <PokemonImage style={{opacity: imgOpacity}} pokemon={pokemon} size={60} onClick={onClick}/>
                     </ImageWrap>
                     {
                         <input 
@@ -36,7 +37,7 @@ export const PokeSlots = () => {
                             style={{padding: 0, lineHeight: "normal", height: "1.8rem"}}
                             type="submit" 
                             value="Elimina" 
-                            disabled={isDisabled} 
+                            disabled={isDisabled}
                             onClick={onRemove}/> 
                     }
                     </div>
