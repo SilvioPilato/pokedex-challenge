@@ -1,0 +1,21 @@
+.pokeimg {
+    cursor: pointer;
+    transition: all .2s ease-in-out
+}
+
+.pokeimg:hover {
+    transform: scale(1.1);
+}
+
+.imgwrapper {
+    border: 0.1rem solid #f4f5f6;
+    border-radius: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 1px 1px 3px #606c76;
+}
+
+.imgwrapper:hover {
+    background-color: rgb(232, 240, 254);
+}

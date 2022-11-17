@@ -1,23 +1,20 @@
 import React from 'react';
 
 type Props = {
-    children: JSX.Element,
+    children?: JSX.Element,
+    className?: string,
     size: number
 }
 
-export const ImageWrap: React.FC<Props> = ({children, size}) => {
+export const ImageWrap: React.FC<Props> = ({children, size, className}) => {
     return (
-        <div style={{
-            height: size,
-            width: size,
-            border: "0.1rem solid #f4f5f6",
-            borderRadius:"3%",
-            display: "flex", 
-            justifyContent: "center",
-            alignItems: "center",
-            boxShadow: "inset 0 0 4px grey"
-        }}
-    >
+        <div
+            className={className}
+            style={{
+                height: size,
+                width: size
+            }}
+        >
         {children}
     </div>
     )
