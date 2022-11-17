@@ -14,7 +14,7 @@ export const App = () => {
                         <div className='column column-66'>
                             <SearchResult />
                         </div>
-                        <div className='column column-25 column-offset-10' >
+                        <div className='column column-25' >
                             <PokeSlots />
                         </div>
                     </div>
