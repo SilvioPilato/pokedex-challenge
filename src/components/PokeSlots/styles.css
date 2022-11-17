@@ -20,3 +20,12 @@
     border: 0.1rem solid #9b4dca;
     background-color: rgb(232, 240, 254);
 }
+
+.pokeslots {
+    display: flex;
+    flex-wrap: wrap;
+    border: 0.1rem solid #d1d1d1;
+    justify-content: space-between;
+    padding: 0.8em;
+    border-radius: 0% 0% 3% 3%;
+}

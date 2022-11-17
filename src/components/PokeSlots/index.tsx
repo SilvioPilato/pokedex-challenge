@@ -57,14 +57,7 @@ export const PokeSlots = () => {
     return (
         <div>
             <h4>Il tuo pokedex</h4>
-            <div style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    border: "0.1rem solid #d1d1d1",
-                    justifyContent: 'space-between',
-                    padding: "0.5em",
-                    borderRadius: "0% 0% 3% 3%"
-                }}>
+            <div className={"pokeslots"}>
             {
                 getSlots()
             }
