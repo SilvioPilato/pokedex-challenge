@@ -25,7 +25,7 @@ export const PokeSlots = () => {
             const isDisabled = isEmpty ? true : false;
             const pokemon = isEmpty ? undefined : selected[i];
             components.push(
-                <div key={`pokeslot-${i}`} style={{display: "flex", marginRight:"1em"}}>
+                <div key={`pokeslot-${i}`} style={{display: "flex"}}>
                     <div style={{display: "flex", flexDirection: "column"}}>
                     <ImageWrap className='imgwrapper' size={70}>
                         {
@@ -57,7 +57,14 @@ export const PokeSlots = () => {
     return (
         <div>
             <h4>Il tuo pokedex</h4>
-            <div style={{display: "flex", flexWrap: "wrap"}}>
+            <div style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    border: "0.1rem solid #d1d1d1",
+                    justifyContent: 'space-between',
+                    padding: "0.5em",
+                    borderRadius: "0% 0% 3% 3%"
+                }}>
             {
                 getSlots()
             }
